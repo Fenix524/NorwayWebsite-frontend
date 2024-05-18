@@ -1,0 +1,64 @@
+.hero {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)),
+    url("../../images/heroBg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  padding-top: 100px;
+  height: 900px;
+}
+.hero > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  color: #ecd3df;
+  font-weight: 300;
+  font-size: 50px;
+
+  display: block;
+
+  @media screen and (min-width: 768px) {
+    font-size: 70px;
+  }
+  @media screen and (min-width: 1024px) {
+    font-size: 90px;
+  }
+}
+
+.navList {
+  margin-top: 30px;
+  padding: 11px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+  flex-wrap: wrap;
+
+  border-bottom: 1px solid #0000001c;
+}
+.navListItem {
+}
+.navListBtn {
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 7px 15px;
+
+  cursor: pointer;
+}
+.navListBtn.active {
+  padding: 7px 15px;
+  border-radius: 12px;
+  color: #e5e4e4;
+}
+
+.factsList {
+}
+.factsListItem:nth-child(2n) > * {
+  text-align: right;
+  margin-left: auto;
+}

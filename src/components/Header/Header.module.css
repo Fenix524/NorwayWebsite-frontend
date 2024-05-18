@@ -1,0 +1,55 @@
+.Header {
+  background-color: #f7f7f7f5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  z-index: 10000;
+}
+.top {
+  height: 85px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+}
+.profile {
+}
+.bottom {
+  border: 1px solid #0000001a;
+  background-color: #fff;
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 5px;
+  @media screen and (min-width: 425px) {
+    gap: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    gap: 20px;
+  }
+}
+
+.navListItem a {
+  height: 25px;
+  padding: 0 10px;
+  margin: 10px 0;
+
+  display: flex;
+  align-items: center;
+
+  @media screen and (min-width: 425px) {
+    height: 30px;
+  }
+  @media screen and (min-width: 768px) {
+    height: 40px;
+    padding: 0 20px;
+  }
+}

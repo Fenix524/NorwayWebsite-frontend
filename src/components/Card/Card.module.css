@@ -1,0 +1,26 @@
+.Card {
+  height: 450px;
+  padding: 30px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
+  border-radius: 18px;
+  color: #fff;
+
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)),
+    url("../../images/mainPageCity/03.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  cursor: pointer;
+}
+.title {
+  font-size: 30px;
+}
+.subtitle {
+  font-size: 15px;
+  opacity: 0.85;
+}

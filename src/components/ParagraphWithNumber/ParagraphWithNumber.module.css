@@ -1,0 +1,13 @@
+.ParagraphWithNumber {
+  /* width: 80%; */
+  width: 65%;
+  display: block;
+}
+.number {
+  margin-bottom: -25px;
+  font-size: 90px;
+  font-weight: bold;
+  color: #0000002a;
+}
+.text {
+}

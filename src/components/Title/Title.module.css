@@ -1,0 +1,36 @@
+.Title {
+  flex-grow: 1;
+  font-size: 40px;
+  font-weight: 400;
+  width: 100%;
+}
+
+.large {
+  font-size: 40px;
+}
+
+.middle {
+  font-size: 32px;
+}
+
+.small {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.titleContainer {
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+.desc {
+  opacity: 0.4;
+  flex: 1 1 auto;
+  max-height: 80px;
+  display: block;
+  @media screen and (min-width: 768px) {
+    text-align: right;
+  }
+}
