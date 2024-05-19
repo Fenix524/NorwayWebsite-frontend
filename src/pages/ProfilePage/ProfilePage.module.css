@@ -1,0 +1,44 @@
+.wrapper {
+  padding-top: 150px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ProfilePage {
+  width: 100%;
+  max-width: 450px;
+}
+.img {
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+}
+.userSetingsList {
+  margin-top: 20px;
+}
+.userSetingsItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.userSetingsItem > span {
+  opacity: 0.4;
+}
+.userSetingsItem:not(:last-child) {
+  margin-bottom: 5px;
+}
+.changeBtn {
+  margin-left: auto;
+  padding: 2px;
+  padding-top: 3px;
+  padding-left: 3px;
+
+  background-color: transparent;
+  border: 1px solid #0000002f;
+  border-radius: 5px;
+  color: #000000b9;
+  cursor: pointer;
+}

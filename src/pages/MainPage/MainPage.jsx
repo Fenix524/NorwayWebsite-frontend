@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Section from "../../components/Section/Section";
 import Title from "../../components/Title/Title";
@@ -8,14 +8,20 @@ import Country from "./Country/Country";
 import CardSet from "../../components/CardSet/CardSet";
 import Card from "../../components/Card/Card";
 import ParagraphWithNumber from "../../components/ParagraphWithNumber/ParagraphWithNumber";
-import { citiesTestArr } from "../../utils/axios/citiesOperation";
+import { useCities } from "../../hooks/useCities";
+import { useLandmarks } from "../../hooks/useLandmarks";
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams(); // Get section index from URL parameters
   console.log(searchParams.get("sectionIndex"));
   const [infoSectionIndex, setInfoSectionIndex] = useState(
     parseInt(searchParams.get("sectionIndex")) || 1
   );
+
+  const { cityArr, citiesTotalAmount } = useCities();
+  const { landmarkArr, landmarksTotalAmount } = useLandmarks();
+
   const infoSections = [
     { label: "Норвегія", value: 1 },
     { label: "Столиця", value: 2 },
@@ -90,14 +96,22 @@ const MainPage = () => {
             Міста Норвегії
           </Title>
           <CardSet>
-            {citiesTestArr.map((item) => {
+            {cityArr.map((item) => {
               return (
-                <li key={item.title}>
+                <li
+                  key={item.name}
+                  onClick={() => {
+                    console.log(item.name);
+                    navigate(`/cities/${item.id}`);
+                  }}
+                >
                   <Card
-                    title={item.title}
-                    subtitle={item.subtitle}
+                    id={item.id}
+                    title={item.name}
+                    subtitle={item.shortDesc}
+                    bgUrl={item.images[0].url}
                     onClick={() => {
-                      console.log(item.title);
+                      console.log(item.name);
                     }}
                   />
                 </li>
@@ -162,15 +176,20 @@ const MainPage = () => {
             Памятки Норвегії
           </Title>
           <CardSet>
-            {citiesTestArr.map((item) => {
+            {landmarkArr.map((item) => {
               return (
-                <li key={item.title}>
+                <li
+                  key={item.id}
+                  onClick={() => {
+                    console.log(item.name);
+                    navigate(`/landmarks/${item.id}`);
+                  }}
+                >
                   <Card
-                    title={item.title}
-                    subtitle={item.subtitle}
-                    onClick={() => {
-                      console.log(item.title);
-                    }}
+                    id={item.id}
+                    title={item.name}
+                    subtitle={item.shortDesc}
+                    bgUrl={item.images[0].url}
                   />
                 </li>
               );

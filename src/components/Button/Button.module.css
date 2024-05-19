@@ -1,0 +1,23 @@
+.Button {
+  padding: 13px 18px;
+  width: 100%;
+  display: block;
+
+  border: 1px solid transparent;
+  background-color: transparent;
+
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+.Button.normal {
+  background-color: #0fc6ee;
+  color: #fff;
+}
+.Button.transparent {
+  color: #000000d3;
+}
+.Button.bordered {
+  border-color: #00000031;
+  color: #0000008e;
+}

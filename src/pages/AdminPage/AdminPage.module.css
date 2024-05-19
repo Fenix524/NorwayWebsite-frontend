@@ -1,0 +1,36 @@
+.AdminPage {
+  padding-top: 150px;
+  flex: 1;
+  display: flex;
+}
+.navSide {
+  /* background-color: #c7ece3; */
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+  /* width: 0; */
+
+  border-right: 1px solid #00000036;
+}
+.navList {
+  position: fixed;
+  width: 300px;
+}
+.navItem {
+}
+.navLink {
+  padding: 10px 15px;
+  display: block;
+  transition: all linear 0.17s;
+}
+.navLink:hover {
+  padding-left: 25px;
+}
+.navItem:nth-child(2n + 1) {
+  background-color: hsla(275, 68%, 83%, 0.151);
+}
+
+.viewSide {
+  /* background-color: #d8ecc7; */
+  flex: 1 1 auto;
+}
