@@ -62,3 +62,7 @@
   text-align: right;
   margin-left: auto;
 }
+
+.mainWrapper section:nth-child(2n - 1) {
+  background-color: #00000009;
+}

@@ -23,8 +23,9 @@
 
   line-height: 1.6;
 }
-.textarea {
-  min-height: 200px;
+.textareaField {
+  min-height: 130px;
+  width: 100%;
 }
 .inputField:focus,
 .inputField:active {

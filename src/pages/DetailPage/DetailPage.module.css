@@ -1,4 +1,5 @@
 .hero {
+  position: relative;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -12,11 +13,16 @@
   justify-content: center;
 }
 .heroTextWrapper {
-  color: #ffffff9c;
+  color: #ffffffbd;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .title {
-  color: #ecd3df;
+  color: #ffffffcb;
   font-weight: 300;
   font-size: 50px;
 
@@ -31,11 +37,40 @@
 }
 .heroTextWrapper > p {
   max-width: 650px;
+  margin-top: 10px;
+  /* padding: 20px;
+  border: 2px solid #ffffff15;
+  border-width: 2px 0;
+  background-color: #0000000a; */
 }
 
 .section {
-  padding: 70px 0;
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.mainWrapper section:nth-child(2n - 1) {
+  background-color: #00000009;
+}
+
+.bookmarkBtn {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+
+  padding: 10px;
+  padding-bottom: 20px;
+
+  color: #f5dd58;
+
+  border-radius: 20px 5px 0 0;
+  background-color: #ffffff73;
+  cursor: pointer;
+  transition: all linear 0.2s;
+}
+
+.bookmarkBtn:hover {
+  padding-bottom: 50px;
 }

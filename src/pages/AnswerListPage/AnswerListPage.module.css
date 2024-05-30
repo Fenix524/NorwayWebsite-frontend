@@ -1,0 +1,73 @@
+.questionCard {
+  transition: all linear 0.15s;
+  border: 1px solid #00000015;
+  border-radius: 2px;
+  padding: 20px;
+}
+.questionCard:hover {
+  transform: scale(0.97);
+}
+.cardSetWrapper > ul {
+  margin-top: 20px;
+  gap: 10px;
+}
+
+/* ================================= */
+.top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.userLogo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.userTextPart {
+  font-size: 13px;
+}
+.userName {
+  font-weight: 500;
+}
+.userEmail {
+}
+
+/* ================================= */
+.bottom {
+  margin-top: 10px;
+}
+.small {
+}
+.detailQuestion {
+}
+
+.statsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.date {
+  opacity: 0.5;
+  font-size: 14px;
+}
+.likes {
+  opacity: 0.7;
+  gap: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navBox {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  row-gap: 0px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.askBtnWrapper {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}

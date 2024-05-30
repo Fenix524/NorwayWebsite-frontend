@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
 import Button from "../../components/Button/Button";
 import css from "./LoginPage.module.css";
-import { login } from "../../redux/auth/auth.slice";
 import { Link } from "react-router-dom";
 import FormInput from "../../components/FieldsFolder/FormInput/FormInput";
 import Title from "../../components/Title/Title";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 import { useId } from "react";
+import { logIn } from "../../redux/auth/auth.operations";
 
 const LoginPage = () => {
   const emailFieldId = useId();
@@ -35,12 +35,10 @@ const LoginPage = () => {
     // Отримання даних з форми
     console.log("Email:", values.email);
     console.log("Password:", values.password);
-    const { firstName, lastName, email, password } = values;
+    const { email, password } = values;
 
     dispatch(
-      login({
-        firstName: firstName,
-        lastName: lastName,
+      logIn({
         email: email,
         password: password,
       })

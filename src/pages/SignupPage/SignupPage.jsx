@@ -1,17 +1,16 @@
 import css from "./SignupPage.module.css";
 import { useDispatch } from "react-redux";
 import Button from "../../components/Button/Button";
-import { register } from "../../redux/auth/auth.slice";
 import { Link } from "react-router-dom";
 import FormInput from "../../components/FieldsFolder/FormInput/FormInput";
 import Title from "../../components/Title/Title";
 import { Form, Formik } from "formik";
 import * as yup from "yup";
 import { useId } from "react";
+import { register } from "../../redux/auth/auth.operations";
 
 const SignupPage = () => {
-  const firstNameFieldId = useId();
-  const lastNameFieldId = useId();
+  const nameFieldId = useId();
   const emailFieldId = useId();
   const passwordFieldId = useId();
 
@@ -31,28 +30,25 @@ const SignupPage = () => {
       .string()
       .min(6, "Пароль повинен містити щонайменше 6 символів")
       .required("Пароль є обов'язковим"),
-    firstName: yup
+    name: yup
       .string()
       .trim("Будь ласка, видаліть пробіли на початку та в кінці")
       .required("Ім'я є обов'язковим"),
-    lastName: yup
-      .string()
-      .trim("Будь ласка, видаліть пробіли на початку та в кінці")
-      .required("Прізвище є обов'язковим"),
   });
 
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
     // Отримання даних з форми
+    console.log("Значення=====", values);
+    console.log("Name:", values.name);
     console.log("Email:", values.email);
     console.log("Password:", values.password);
-    const { firstName, lastName, email, password } = values;
+    const { name, email, password } = values;
 
     dispatch(
       register({
-        firstName: firstName,
-        lastName: lastName,
+        name: name,
         email: email,
         password: password,
       })
@@ -72,8 +68,7 @@ const SignupPage = () => {
             <div className={css.title}>
               <Title>Реєстрація</Title>
             </div>
-            <FormInput label="імя" id={firstNameFieldId} name="firstName" />
-            <FormInput label="Прізвище" id={lastNameFieldId} name="lastName" />
+            <FormInput label="імя" id={nameFieldId} name="name" />
             <FormInput label="Пошта" id={emailFieldId} name="email" />
             <FormInput
               label="Пароль"
@@ -82,14 +77,7 @@ const SignupPage = () => {
               fieldContentType="password"
             />
             <div className={css.btn}>
-              <Button
-                type={"submit"}
-                onClick={() => {
-                  dispatch(register());
-                }}
-              >
-                Підтвердити
-              </Button>
+              <Button type={"submit"}>Підтвердити</Button>
             </div>
             <div className={css.helpBar}>
               <Link to={"/authorization"}>Увійти до профілю?</Link>

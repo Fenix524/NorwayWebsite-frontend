@@ -1,23 +1,30 @@
-import React, { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
 import { ChoiceField } from "../FieldsFolder/ChoiceField/ChoiceField";
 import { SearchField } from "../FieldsFolder/SearchField/SearchField";
 import css from "./FilterBar.module.css";
 
-const FilterBar = (props) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+const FilterBar = (searchParams, setSearchParams) => {
+  // const [searchParams, setSearchParams] = useSearchParams();
 
   const options = [
-    { label: "За назвою a-z", value: "a-z" },
-    { label: "За назвою z-a", value: "z-a" },
+    { label: "За назвою a-z", value: "1" },
+    { label: "За назвою z-a", value: "-1" },
+    { label: "Нічого", value: "0" },
   ];
 
   const handleSearchChange = (value) => {
-    setSearchParams({ ...Object.fromEntries(searchParams), search: value });
+    try {
+      setSearchParams({ ...Object.fromEntries(searchParams), search: value });
+    } catch (error) {
+      return;
+    }
   };
 
   const handleSortChange = (value) => {
-    setSearchParams({ ...Object.fromEntries(searchParams), order: value });
+    try {
+      setSearchParams({ ...Object.fromEntries(searchParams), order: value });
+    } catch (error) {
+      return;
+    }
   };
 
   return (

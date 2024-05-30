@@ -14,6 +14,10 @@
   background-position: center;
 
   cursor: pointer;
+  transition: all linear 0.2s;
+}
+.Card:hover {
+  transform: scale(0.98);
 }
 .title {
   font-size: 30px;

@@ -2,12 +2,27 @@
   padding-top: 150px;
   flex: 1;
   display: flex;
+  flex-direction: column;
+}
+.wrapper > div {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  margin: 40px auto;
+  row-gap: 40px;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    align-items: start;
+  }
 }
 .ProfilePage {
   width: 100%;
   max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .img {
   margin: 0 auto;
@@ -36,9 +51,100 @@
   padding-top: 3px;
   padding-left: 3px;
 
+  width: 40px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background-color: transparent;
   border: 1px solid #0000002f;
   border-radius: 5px;
   color: #000000b9;
   cursor: pointer;
+  transition: all linear 0.2s;
+}
+
+.changeBtn:hover {
+  border-color: #28679b;
+  color: #28679b;
+}
+
+.buttonContainer {
+  margin-top: 15px;
+}
+.deleteBtnWrapper {
+  margin-top: 7px;
+  background-color: #da16160a;
+}
+
+.imgContainer {
+  position: relative;
+}
+
+.imgContainer .changeBtn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.fileInput {
+  display: none;
+}
+
+.BookmarksPage {
+  width: 100%;
+  @media screen and (min-width: 1024px) {
+    margin-left: 40px;
+  }
+}
+.bookmarkList {
+  border-top: 2px solid #000000b7;
+}
+.bookmarkListItem {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bookmarkListItem:nth-child(2n) {
+  background-color: #00000009;
+  border-radius: 10px;
+}
+.bookmarkTitle {
+  font-size: 24px;
+}
+.bookmarkDesk {
+  opacity: 0.5;
+}
+.buttonBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.bookmarkBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  width: 50px;
+  height: 35px;
+
+  color: #000000b2;
+  border: 1px solid #00000028;
+  border-radius: 10px;
+  background-color: transparent;
+
+  cursor: pointer;
+  transition: all linear 0.2s;
+}
+.bookmarkBtn:hover,
+.bookmarkBtn:hover * {
+  background-color: #fffffff3;
+}
+.bookmarkListItem:nth-child(2n - 1) .bookmarkBtn:hover {
+  background-color: #0000000a;
+}
+.bookmarkBtn > * {
+  margin-bottom: -2px;
 }

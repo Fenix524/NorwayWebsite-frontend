@@ -1,0 +1,83 @@
+.top {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.userLogo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.userTextPart {
+  font-size: 13px;
+}
+.userName {
+  font-weight: 500;
+}
+.userEmail {
+}
+
+.statsBox {
+  display: flex;
+  align-items: center;
+}
+.likeCount {
+  font-size: 20px;
+  opacity: 0.8;
+}
+.likeButton {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid transparent;
+
+  opacity: 0.6;
+
+  cursor: pointer;
+  transition: all linear 0.1s;
+}
+.likeButton.active {
+  opacity: 1;
+  color: #fff;
+  background-color: #f00000a8;
+  border-color: #ffffffd5;
+}
+.likeButton:hover {
+  transform: scale(0.95);
+}
+.likeButton > * {
+  margin-bottom: 2px;
+}
+
+.answerSection {
+  border-top: 2px solid #00000011;
+  background-color: #00000004;
+
+  flex: 1 1 auto;
+}
+.answerBox:not(:first-child) {
+  border-top: 1px solid #00000013;
+}
+.answerBot {
+  padding-left: 50px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.answerDate,
+.questionDate {
+  opacity: 0.5;
+  font-size: 15px;
+}
+
+.askBtnWrapper {
+  margin-top: 10px;
+  margin-bottom: -30px;
+}

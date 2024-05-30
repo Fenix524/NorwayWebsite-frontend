@@ -1,10 +1,12 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import Section from "../../components/Section/Section";
 import Title from "../../components/Title/Title";
 import css from "./MainPage.module.css";
 import { useState } from "react";
 import Country from "./Country/Country";
+import Capital from "./Capital/Capital";
+import Currency from "./Currency/Currency";
 import CardSet from "../../components/CardSet/CardSet";
 import Card from "../../components/Card/Card";
 import ParagraphWithNumber from "../../components/ParagraphWithNumber/ParagraphWithNumber";
@@ -42,20 +44,20 @@ const MainPage = () => {
       case 1:
         return <Country />;
       case 2:
-        return "2";
+        return <Capital />;
       case 3:
-        return "3";
+        return <Currency />;
       case 4:
-        return "4";
+        return <Country />;
       case 5:
-        return "5";
+        return <Country />;
       default:
         return null;
     }
   };
 
   return (
-    <>
+    <div className={css.mainWrapper}>
       <section className={css.hero}>
         <Container>
           <h1 className={css.title}>НОРВЕГІЯ</h1>
@@ -96,13 +98,13 @@ const MainPage = () => {
             Міста Норвегії
           </Title>
           <CardSet>
-            {cityArr.map((item) => {
+            {cityArr.slice(0, 5).map((item) => {
               return (
                 <li
                   key={item.name}
                   onClick={() => {
-                    console.log(item.name);
-                    navigate(`/cities/${item.id}`);
+                    console.log(item);
+                    navigate(`/cities/${item._id}`);
                   }}
                 >
                   <Card
@@ -117,6 +119,14 @@ const MainPage = () => {
                 </li>
               );
             })}
+            <Link to={"cities"}>
+              <Card
+                title={"ПЕРЕГЛЯНУТИ ЩЕ"}
+                bgUrl={
+                  "https://norwaytravelguide.imgix.net/195136/x/0/what-are-polar-nights-in-norway-1?auto=compress%2Cformat&ch=Width%2CDPR&dpr=1&ixlib=php-3.3.0&w=883&s=1c14614666df930afcdff347b22a5a45"
+                }
+              />
+            </Link>
           </CardSet>
         </Container>
       </Section>
@@ -176,13 +186,13 @@ const MainPage = () => {
             Памятки Норвегії
           </Title>
           <CardSet>
-            {landmarkArr.map((item) => {
+            {landmarkArr.slice(0, 5).map((item) => {
               return (
                 <li
                   key={item.id}
                   onClick={() => {
                     console.log(item.name);
-                    navigate(`/landmarks/${item.id}`);
+                    navigate(`/landmarks/${item._id}`);
                   }}
                 >
                   <Card
@@ -194,10 +204,18 @@ const MainPage = () => {
                 </li>
               );
             })}
+            <Link to={"landmarks"}>
+              <Card
+                title={"ПЕРЕГЛЯНУТИ ЩЕ"}
+                bgUrl={
+                  "https://norwaytravelguide.imgix.net/195136/x/0/what-are-polar-nights-in-norway-1?auto=compress%2Cformat&ch=Width%2CDPR&dpr=1&ixlib=php-3.3.0&w=883&s=1c14614666df930afcdff347b22a5a45"
+                }
+              />
+            </Link>
           </CardSet>
         </Container>
       </Section>
-    </>
+    </div>
   );
 };
 

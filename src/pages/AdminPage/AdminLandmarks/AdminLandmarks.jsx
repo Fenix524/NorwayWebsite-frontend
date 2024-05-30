@@ -3,14 +3,46 @@ import cssTable from "../../../styles/adminTable.module.css";
 import FilterBar from "../../../components/FilterBar/FilterBar";
 import css from "./AdminLandmarks.module.css";
 import { selectLandmarkArr } from "../../../redux/landmarks/landmarks.selectors";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axiosInstance from "../../../utils/axios/axios";
+import { FaRegPenToSquare } from "react-icons/fa6";
+import { HiOutlineTrash } from "react-icons/hi";
 
 const AdminLandmarks = () => {
   const navigate = useNavigate();
-  const landmarkArr = useSelector(selectLandmarkArr);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [landmarkArr, setLandmarkArr] = useState([]);
+
+  useEffect(() => {
+    async function getCities() {
+      try {
+        const params = {
+          filter: {
+            name: searchParams.get("search"), // Поле для фільтрації
+          },
+          sort: {
+            name: searchParams.get("sort"),
+          },
+        };
+
+        const response = await axiosInstance.get("/landmarks", { params });
+        console.log(response.data);
+        setLandmarkArr(response.data.data);
+      } catch (error) {
+        console.error("Помилка завантаження даних:", error);
+      }
+    }
+
+    getCities();
+  }, [searchParams]);
   return (
     <div className={css.AdminLandmarks}>
-      <FilterBar />
+      <FilterBar
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+      />
       <table className={cssTable.table}>
         <thead>
           <tr>
@@ -22,7 +54,7 @@ const AdminLandmarks = () => {
         </thead>
         <tbody>
           {landmarkArr.map((item) => {
-            const { id, name, shortDesc, images } = item;
+            const { _id: id, name, shortDesc, images } = item;
             return (
               <tr key={name}>
                 <td>{name}</td>
@@ -37,17 +69,25 @@ const AdminLandmarks = () => {
                         console.log(name);
                       }}
                     >
-                      Редагувати
-                    </button>
+                      <FaRegPenToSquare />
+                    </button>{" "}
                     <button
                       onClick={() => {
                         console.log(name);
-                        navigate(`/landmarks/${id}`);
+                        navigate(`/cities/${id}`);
                       }}
                     >
-                      Переглянути
+                      <HiOutlineTrash size={20} />
                     </button>
                   </div>
+                  <button
+                    onClick={() => {
+                      console.log(name);
+                      navigate(`/cities/${id}`);
+                    }}
+                  >
+                    Переглянути
+                  </button>
                 </td>
               </tr>
             );

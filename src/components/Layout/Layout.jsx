@@ -17,7 +17,7 @@ export const Layout = () => {
         </main>
       </Suspense>
       <Footer />
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center" className={css.toastContainer} />
     </div>
   );
 };

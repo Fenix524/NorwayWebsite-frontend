@@ -1,7 +1,17 @@
 import css from "./ModalWrapper.module.css";
 
-const ModalWrapper = ({ children }) => {
-  return <div className={css.ModalWrapper}>{children}</div>;
+const ModalWrapper = ({ onClose, children }) => {
+  const handleWrapperClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
+  return (
+    <div className={css.ModalWrapper} onClick={handleWrapperClick}>
+      {children}
+    </div>
+  );
 };
 
 export default ModalWrapper;

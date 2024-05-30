@@ -12,6 +12,7 @@ const FormInput = ({
   type = "text",
   options = [],
   initialValue = "",
+  onChange = () => {},
 }) => {
   const [field, meta, helpers] = useField(name);
   const { touched, error } = meta;
@@ -79,6 +80,22 @@ const FormInput = ({
             onChange={handleChange}
             styles={customStyles}
           />
+        ) : type === "textarea" ? (
+          <Field
+            className={`${css.textareaField} ${css.inputField}`}
+            name={name}
+            as="textarea"
+            id={id}
+            onChange={onChange}
+          />
+        ) : type === "file" ? (
+          <Field
+            className={`${css.fileField} ${css.inputField}`}
+            name={name}
+            type="file"
+            id={id}
+            onChange={onChange}
+          />
         ) : (
           <Field className={css.inputField} name={name} type={type} id={id} />
         )}
@@ -93,7 +110,7 @@ FormInput.propTypes = {
   label: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(["text", "textarea", "select"]),
+  type: PropTypes.oneOf(["text", "textarea", "select", "file"]),
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,

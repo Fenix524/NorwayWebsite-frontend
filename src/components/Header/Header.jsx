@@ -44,6 +44,9 @@ const Header = () => {
               <li className={css.navListItem}>
                 <Link to="/cities">Міста</Link>
               </li>
+              <li className={css.navListItem}>
+                <Link to="/answers">Форум</Link>
+              </li>
               {userRole === "admin" && іsAuthorize && (
                 <li className={css.navListItem}>
                   <Link to="/admin">Адмін панель</Link>
