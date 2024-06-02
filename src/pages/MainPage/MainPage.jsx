@@ -111,7 +111,7 @@ const MainPage = () => {
                     id={item.id}
                     title={item.name}
                     subtitle={item.shortDesc}
-                    bgUrl={item.images[0].url}
+                    bgUrl={item.images[0]?.url}
                     onClick={() => {
                       console.log(item.name);
                     }}
@@ -199,7 +199,7 @@ const MainPage = () => {
                     id={item.id}
                     title={item.name}
                     subtitle={item.shortDesc}
-                    bgUrl={item.images[0].url}
+                    bgUrl={item.images[0]?.url}
                   />
                 </li>
               );

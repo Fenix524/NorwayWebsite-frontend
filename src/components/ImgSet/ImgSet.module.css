@@ -13,6 +13,7 @@
   min-height: 200px;
 
   object-fit: cover;
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     max-height: 300px;
@@ -21,12 +22,12 @@
 }
 
 .Modal {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
+  padding: 20px; */
 }
 
 .Overlay {
@@ -53,7 +54,9 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
+
+  background-color: #ffffff04;
+
   border: none;
   color: white;
   font-size: 1.5rem;
@@ -64,9 +67,9 @@
 }
 
 .PrevButton {
-  left: -3vw;
+  left: 0;
 }
 
 .NextButton {
-  right: -3vw;
+  right: 0;
 }

@@ -8,11 +8,14 @@ import axiosInstance from "../../../utils/axios/axios";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { HiOutlineTrash } from "react-icons/hi";
 import { imgPathNormalize } from "../../../utils/imgPathNormalize";
+import UserModalForm from "../../../components/UserModalForm/UserModalForm";
 
 const AdminUsers = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [usersArr, setUsersArr] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [modalInitialData, setModalInitialData] = useState({});
 
   useEffect(() => {
     async function getCities() {
@@ -63,7 +66,7 @@ const AdminUsers = () => {
           {usersArr.map((item) => {
             const { _id: id, name, email, role, avatarURL } = item;
             return (
-              <tr key={name}>
+              <tr key={id}>
                 <td>{name}</td>
                 <td>{email}</td>
                 <td>{role}</td>
@@ -74,11 +77,12 @@ const AdminUsers = () => {
                   <div className={cssTable.buttonBox}>
                     <button
                       onClick={() => {
-                        console.log(name);
+                        setModalInitialData(item);
+                        setShowModal(true);
                       }}
                     >
                       <FaRegPenToSquare />
-                    </button>{" "}
+                    </button>
                     <button
                       onClick={() => {
                         console.log(name);
@@ -94,6 +98,15 @@ const AdminUsers = () => {
           })}
         </tbody>
       </table>
+      {showModal && (
+        <UserModalForm
+          isVisible={showModal}
+          initialValue={modalInitialData}
+          onClose={() => {
+            setShowModal(false);
+          }}
+        />
+      )}
     </div>
   );
 };

@@ -1,0 +1,43 @@
+.imgChoice {
+  display: flex;
+  gap: 10px;
+  @media screen and (min-width: 1024px) {
+    flex-direction: column;
+  }
+}
+.fieldWrapper {
+  /* height: 70px; */
+  display: flex;
+  flex: 1 1 100%;
+}
+
+.addImgBtn {
+  max-height: 70px;
+  padding: 15px;
+  border: 1px solid #00000073;
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 200px;
+  color: #0000008a;
+}
+
+.urlInput {
+  flex-grow: 1;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid #00000048;
+  padding: 15px;
+}
+
+.urlSubmitBtn {
+  background-color: transparent;
+  border-radius: 0 15px 15px 0;
+  padding: 20px;
+  border: 1px solid #00000048;
+  cursor: pointer;
+}
+
+.urlSubmitBtn:hover {
+}

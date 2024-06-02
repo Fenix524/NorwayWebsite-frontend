@@ -60,7 +60,7 @@ const AdminLandmarks = () => {
                 <td>{name}</td>
                 <td>{shortDesc}</td>
                 <td>
-                  <img src={images[0].url} />
+                  <img src={images[0]?.url} />
                 </td>
                 <td>
                   <div className={cssTable.buttonBox}>

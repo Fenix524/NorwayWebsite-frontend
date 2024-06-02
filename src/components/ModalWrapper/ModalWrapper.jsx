@@ -1,6 +1,6 @@
 import css from "./ModalWrapper.module.css";
 
-const ModalWrapper = ({ onClose, children }) => {
+const ModalWrapper = ({ onClose, isVisible, children }) => {
   const handleWrapperClick = (event) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -8,9 +8,11 @@ const ModalWrapper = ({ onClose, children }) => {
   };
 
   return (
-    <div className={css.ModalWrapper} onClick={handleWrapperClick}>
-      {children}
-    </div>
+    isVisible && (
+      <div className={css.ModalWrapper} onClick={handleWrapperClick}>
+        {children}
+      </div>
+    )
   );
 };
 

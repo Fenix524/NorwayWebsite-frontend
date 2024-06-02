@@ -1,14 +1,21 @@
 import { serverConfig } from "../constants/config";
 
 export const imgPathNormalize = (url) => {
-  let newUrl = url;
+  if (!url) {
+    console.error("Недійсний URL");
+    return "";
+  }
+
+  let newUrl = url.replace(/\\/g, "/");
+
   try {
     if (!newUrl.startsWith("http")) {
       newUrl = serverConfig.HOST + newUrl;
-      return newUrl;
+      // console.log({ newUrl });
     }
     return newUrl;
   } catch (error) {
-    console.log("Помилка перетворення зображення!!!");
+    console.log("Помилка перетворення зображення!!!", error);
+    return "";
   }
 };

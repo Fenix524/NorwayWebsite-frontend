@@ -7,10 +7,138 @@
   height: 100vh;
   width: 100vw;
 
-  background-color: #fff;
+  overflow: auto;
+
+  background-color: #0000003a;
 }
 
 .formWrapper {
-  padding: 20px;
+  padding: 50px;
+  padding-top: 70px;
+  margin: 30px;
+
+  background-color: #fff;
+
+  border-radius: 20px;
   text-align: left;
+}
+
+.addImgBtn,
+.createSectionBtn,
+.removeSectionBtn {
+  margin: 5px 0;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+
+  background-color: transparent;
+  color: #0000007c;
+  border: 1px solid #00000046;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: all linear 0.1s;
+}
+
+.formWrapper button:hover {
+  background-color: #00000010;
+}
+
+.imgList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  row-gap: 10px;
+  margin: 5px 0;
+  padding: 5px;
+
+  /* overflow-x: auto; */
+  padding-bottom: 10px;
+}
+.imgCard {
+  flex: 1 0 180px;
+}
+.imgCard img {
+  border-radius: 5px 5px 0 0;
+  /* width: 200px; */
+  width: 100%;
+  height: 150px;
+}
+.imgCard button {
+  margin-top: -6px;
+  border-radius: 0 0 5px 5px;
+}
+
+.middleTitle {
+  margin-top: 30px;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+
+  border-bottom: 2px solid #00000017;
+}
+.smallTitle {
+  margin-top: 20px;
+}
+
+.inputGroup {
+  padding: 8px 0;
+}
+.inputGroup > * {
+  display: block;
+  width: 100%;
+}
+.label {
+}
+.field {
+  padding: 10px;
+  border: 1px solid #00000027;
+  border-radius: 5px;
+}
+.inputGroup textarea {
+  min-height: 150px;
+  max-width: 100%;
+  min-width: 100%;
+
+  height: max-content;
+}
+
+.addImgBtn {
+  flex: 0 0 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  background-color: transparent;
+}
+
+.deleteBtn {
+  display: block;
+  padding: 10px;
+  width: 100%;
+
+  background-color: transparent;
+  border: 1px solid #00000070;
+}
+
+.sectionCard {
+  border: 2px solid #00000091;
+  border-width: 2px 0 2px 0;
+  padding: 5px 0;
+}
+
+.closeModal {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  background-color: #fff;
+  border-color: transparent;
+  cursor: pointer;
+
+  border-radius: 5px;
+  border: 1px solid #000;
+
+  color: #000000;
 }

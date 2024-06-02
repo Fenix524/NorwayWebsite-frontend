@@ -11,11 +11,10 @@ import { useEffect, useState } from "react";
 
 import { IoBookmarkOutline, IoBookmark } from "react-icons/io5";
 import {
-  addToBookmarks,
-  getAllBookmarks,
   getOneBookmark,
   togleBookmarks,
 } from "../../utils/axios/bookmarkAxios";
+import { imgPathNormalize } from "../../utils/imgPathNormalize";
 // import { getAllBookmarks } from "../../utils/axios/bookmarkAxios";
 
 const DetailPage = ({ modelSelector }) => {
@@ -30,7 +29,6 @@ const DetailPage = ({ modelSelector }) => {
       setThisItem(item);
 
       const bookmark = await getOneBookmark();
-      console.log(bookmark);
       setThisBookmark(bookmark);
     };
 
@@ -43,20 +41,20 @@ const DetailPage = ({ modelSelector }) => {
 
   const addBookmark = async () => {
     togleBookmarks(thisItem._id).then((res) => {
-      console.log({ res, thisBookmark, thisItem });
       setThisBookmark(res);
     });
   };
 
   const { name, shortDesc, images, sections } = thisItem;
-  console.log(images);
   return (
     thisItem && (
       <div className={css.mainWrapper}>
         <section
           className={css.hero}
           style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)), url(${thisItem.images[0].url})`,
+            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)), url(${imgPathNormalize(
+              thisItem.images[0]?.url
+            )})`,
           }}
         >
           <button className={css.bookmarkBtn} onClick={addBookmark}>
@@ -82,7 +80,10 @@ const DetailPage = ({ modelSelector }) => {
                 <Title>{title}</Title>
                 <p>{content}</p>
                 <ImgSet
-                  imgArr={images.map((url) => ({ src: url, alt: "???" }))}
+                  imgArr={images.map((url) => ({
+                    src: imgPathNormalize(url),
+                    alt: "???",
+                  }))}
                 />
               </Container>
             </section>
@@ -99,7 +100,7 @@ const DetailPage = ({ modelSelector }) => {
             </Title>
             <ImgSet
               imgArr={images.map((img) => ({
-                src: img.url,
+                src: imgPathNormalize(img.url),
                 alt: img.description,
               }))}
             />

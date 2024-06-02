@@ -50,7 +50,7 @@ const ImgSet = ({ imgArr }) => {
         {selectedImageIndex !== null && (
           <>
             <button className={css.PrevButton} onClick={prevImage}>
-              <FaArrowLeft /> {/* Стрілка "Назад" */}
+              <FaArrowLeft size={30} /> {/* Стрілка "Назад" */}
             </button>
             <img
               className={css.FullImage}
@@ -58,7 +58,7 @@ const ImgSet = ({ imgArr }) => {
               alt="Full size"
             />
             <button className={css.NextButton} onClick={nextImage}>
-              <FaArrowRight /> {/* Стрілка "Вперед" */}
+              <FaArrowRight size={30} /> {/* Стрілка "Вперед" */}
             </button>
           </>
         )}

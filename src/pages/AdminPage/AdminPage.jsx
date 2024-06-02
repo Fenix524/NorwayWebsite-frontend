@@ -21,6 +21,11 @@ const AdminPage = () => {
               <p>🏛️ Памятки ⛩️</p>
             </Link>
           </li>
+          <li className={css.navItem}>
+            <Link className={css.navLink} to={"landmarks"}>
+              <p>🙋‍♂️ Запитання 🤔</p>
+            </Link>
+          </li>
         </ul>
       </div>
       <div className={css.viewSide}>

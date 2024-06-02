@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import Title from "../Title/Title";
 import css from "./Card.module.css";
+import { imgPathNormalize } from "../../utils/imgPathNormalize";
 
 const Card = ({ title, subtitle, bgUrl }) => {
   return (
     <div
       className={css.Card}
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)), url(${bgUrl})`,
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)), url(${imgPathNormalize(
+          bgUrl
+        )})`,
       }}
     >
       <div className={css.title}>
