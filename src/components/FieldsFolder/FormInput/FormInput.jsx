@@ -11,7 +11,7 @@ const FormInput = ({
   name,
   type = "text",
   options = [],
-  initialValue = "",
+  initialValue = {},
   onChange = () => {},
 }) => {
   const [field, meta, helpers] = useField(name);
@@ -34,7 +34,7 @@ const FormInput = ({
       width: "100%",
       borderRadius: 11,
       border: state.isFocused
-        ? "2px dashed #b8a382"
+        ? "2px dashed #0fc6ee"
         : "1px solid rgba(0, 0, 0, 0.162)",
       "&:hover": {
         borderColor: state.isFocused ? null : "1px solid rgba(0, 0, 0, 0.162)",
@@ -42,7 +42,7 @@ const FormInput = ({
     }),
     option: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isSelected ? "#b8a382" : null,
+      backgroundColor: state.isSelected ? "#0fc6ee" : null,
       color: state.isSelected ? "#ffffff" : "#000000",
       "&:hover": {
         backgroundColor: "#f0f0f0",

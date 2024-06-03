@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import css from "./AnswerPage.module.css";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import {
   answerQuestion,
+  deleteQuestion,
   getOneQuestion,
   likeAnswer,
   likeQuestion,
+  updateQuestion,
 } from "../../utils/axios/questionsAxios";
 import baseCss from "../../styles/base.module.css";
 import Title from "../../components/Title/Title";
@@ -22,8 +24,10 @@ import { AiFillLike } from "react-icons/ai";
 
 const AnswerPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [thisItem, setThisItem] = useState();
   const currentUser = useSelector(selectUser);
+  const [showFormAnswer, setShowFormAnswer] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
@@ -99,6 +103,50 @@ const AnswerPage = () => {
               </p>
             </div>
             <div className={css.askBtnWrapper}>
+              {currentUser._id === thisItem.askedBy._id && (
+                <div className={css.changeQuestionsBox}>
+                  <Button
+                    style="bordered"
+                    onClick={() => {
+                      setShowFormAnswer(true);
+                    }}
+                  >
+                    + Редагувати питання
+                  </Button>
+                  {showFormAnswer && (
+                    <MiniModal
+                      name={"question"}
+                      label={"Питання"}
+                      onSubmit={async (value) => {
+                        console.log(value);
+                        const newItem = await updateQuestion(
+                          thisItem._id,
+                          value
+                        );
+                        console.log({ newItem });
+                        setThisItem({
+                          ...thisItem,
+                          question: newItem.question,
+                        });
+                        setShowFormAnswer(false);
+                      }}
+                      onClose={() => {
+                        setShowFormAnswer(false);
+                      }}
+                    />
+                  )}
+                  <Button
+                    style="bordered"
+                    onClick={async () => {
+                      console.log(thisItem._id);
+                      await deleteQuestion(thisItem._id);
+                      navigate("/answers");
+                    }}
+                  >
+                    + Видалити питання
+                  </Button>
+                </div>
+              )}
               <Button
                 style="bordered"
                 onClick={() => {

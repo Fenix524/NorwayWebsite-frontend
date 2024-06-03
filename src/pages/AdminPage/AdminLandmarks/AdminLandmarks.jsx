@@ -8,12 +8,29 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../../utils/axios/axios";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { HiOutlineTrash } from "react-icons/hi";
+import {
+  createLandmark,
+  deleteLandmark,
+  updateLandmark,
+} from "../../../utils/axios/landmarkAxios";
+import DetailPageModalForm from "../../../components/DetailPageModalForm/DetailPageModalForm";
+import Button from "../../../components/Button/Button";
+
+const initialPageSteat = {
+  name: "",
+  shortDesc: "",
+  pageType: "Landmark",
+  images: [],
+  sections: [],
+};
 
 const AdminLandmarks = () => {
   const navigate = useNavigate();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [landmarkArr, setLandmarkArr] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [initialData, setInitialData] = useState(initialPageSteat);
 
   useEffect(() => {
     async function getCities() {
@@ -37,12 +54,35 @@ const AdminLandmarks = () => {
 
     getCities();
   }, [searchParams]);
+
+  const handleSave = (updatedData) => {
+    console.log("Оновлені дані:", updatedData);
+    // Тут можна додати логіку для збереження оновлених даних
+  };
+  const createCityDoc = () => {
+    // console.log("Оновлені дані:", updatedData);
+    setInitialData(initialPageSteat);
+    setShowModal(true);
+    // Тут можна додати логіку для збереження оновлених даних
+  };
+
+  if (!landmarkArr) {
+    return <div>Loading...</div>; // Покажіть що дані завантажуються
+  }
+
   return (
     <div className={css.AdminLandmarks}>
-      <FilterBar
-        searchParams={searchParams}
-        setSearchParams={setSearchParams}
-      />
+      <div className={css.navBox}>
+        <FilterBar
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
+        />
+        <div className={css.createBtnWrapper}>
+          <Button style={"bordered"} onClick={createCityDoc}>
+            Створити нове місто
+          </Button>
+        </div>
+      </div>
       <table className={cssTable.table}>
         <thead>
           <tr>
@@ -66,15 +106,19 @@ const AdminLandmarks = () => {
                   <div className={cssTable.buttonBox}>
                     <button
                       onClick={() => {
-                        console.log(name);
+                        setInitialData(
+                          landmarkArr.find((city) => {
+                            return city._id === id;
+                          })
+                        );
+                        setShowModal(true);
                       }}
                     >
                       <FaRegPenToSquare />
-                    </button>{" "}
+                    </button>
                     <button
                       onClick={() => {
-                        console.log(name);
-                        navigate(`/cities/${id}`);
+                        deleteLandmark(id);
                       }}
                     >
                       <HiOutlineTrash size={20} />
@@ -83,7 +127,7 @@ const AdminLandmarks = () => {
                   <button
                     onClick={() => {
                       console.log(name);
-                      navigate(`/cities/${id}`);
+                      navigate(`/landmarks/${id}`);
                     }}
                   >
                     Переглянути
@@ -94,6 +138,14 @@ const AdminLandmarks = () => {
           })}
         </tbody>
       </table>
+      {showModal && (
+        <DetailPageModalForm
+          handleClose={() => setShowModal(false)}
+          initialData={initialData}
+          createPage={createLandmark}
+          updatePage={updateLandmark}
+        />
+      )}
     </div>
   );
 };

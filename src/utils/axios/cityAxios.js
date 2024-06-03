@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 const showSuccessToast = (message) => {
   toast.success(message);
 };
-
 const showErrorToast = (message) => {
   toast.error(message);
 };

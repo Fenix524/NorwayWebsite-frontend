@@ -79,6 +79,7 @@ const AnswerListPage = () => {
             <Button
               style="bordered"
               onClick={() => {
+                console.log(1);
                 setShowForm(true);
               }}
             >

@@ -56,6 +56,16 @@
   margin-bottom: 2px;
 }
 
+.changeQuestionsBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.changeQuestionsBox button {
+  flex: 1 1 200px;
+}
+
 .answerSection {
   border-top: 2px solid #00000011;
   background-color: #00000004;

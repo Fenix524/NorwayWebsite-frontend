@@ -9,6 +9,7 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import { HiOutlineTrash } from "react-icons/hi";
 import { imgPathNormalize } from "../../../utils/imgPathNormalize";
 import UserModalForm from "../../../components/UserModalForm/UserModalForm";
+import { deleteUser, updateUser } from "../../../utils/axios/userAxios";
 
 const AdminUsers = () => {
   const navigate = useNavigate();
@@ -84,9 +85,13 @@ const AdminUsers = () => {
                       <FaRegPenToSquare />
                     </button>
                     <button
-                      onClick={() => {
-                        console.log(name);
-                        navigate(`/cities/${id}`);
+                      onClick={async () => {
+                        const newUser = await deleteUser(id);
+                        const newArr = usersArr.filter(
+                          (user) => user._id !== id
+                        );
+                        console.log({ newArr });
+                        setUsersArr(newArr);
                       }}
                     >
                       <HiOutlineTrash size={20} />
@@ -104,6 +109,17 @@ const AdminUsers = () => {
           initialValue={modalInitialData}
           onClose={() => {
             setShowModal(false);
+          }}
+          onSubmit={async (value) => {
+            const { _id: id, name, email, role } = value;
+            console.log({ name, email, role });
+
+            const newUser = await updateUser(id, { name, email, role });
+
+            const newArr = usersArr.filter((user) => user._id !== id);
+            newArr.push(newUser.data);
+            console.log({ newArr });
+            setUsersArr(newArr);
           }}
         />
       )}

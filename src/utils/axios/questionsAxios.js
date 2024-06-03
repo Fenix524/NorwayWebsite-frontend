@@ -130,9 +130,10 @@ export const diselikeAnswer = async (questionId, answerId) => {
 };
 
 export const updateQuestion = async (questionId, questionData) => {
+  console.log({ questionId, questionData });
   try {
     const response = await axiosInstance.put(
-      `/answer/${questionId}`,
+      `/questions/answer/${questionId}`,
       questionData
     );
     showSuccessToast("Питання успішно оновлено! ✨");
@@ -146,7 +147,9 @@ export const updateQuestion = async (questionId, questionData) => {
 
 export const deleteQuestion = async (questionId) => {
   try {
-    const response = await axiosInstance.delete(`/answer/${questionId}`);
+    const response = await axiosInstance.delete(
+      `/questions/answer/${questionId}`
+    );
     showSuccessToast("Питання успішно видалено! 🗑️");
     return response.data;
   } catch (error) {
@@ -159,7 +162,7 @@ export const deleteQuestion = async (questionId) => {
 export const updateAnswer = async (questionId, answerId, answerData) => {
   try {
     const response = await axiosInstance.put(
-      `/ask/${questionId}/${answerId}`,
+      `/questions/ask/${questionId}/${answerId}`,
       answerData
     );
     showSuccessToast("Відповідь успішно оновлено! ✨");

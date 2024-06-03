@@ -8,11 +8,9 @@ const ModalWrapper = ({ onClose, isVisible, children }) => {
   };
 
   return (
-    isVisible && (
-      <div className={css.ModalWrapper} onClick={handleWrapperClick}>
-        {children}
-      </div>
-    )
+    <div className={css.ModalWrapper} onClick={handleWrapperClick}>
+      {children}
+    </div>
   );
 };
 
