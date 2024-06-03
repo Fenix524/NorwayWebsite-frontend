@@ -1,7 +1,8 @@
 import axios from "axios";
+import { serverConfig } from "../../constants/config";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3003/",
+  baseURL: serverConfig.HOST,
 });
 
 // Utility to add JWT

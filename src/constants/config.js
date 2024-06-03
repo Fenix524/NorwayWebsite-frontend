@@ -1,3 +1,3 @@
 export const serverConfig = {
-  HOST: "http://localhost:3003",
+  HOST: "https://norwaywebsite-backend.onrender.com",
 };
