@@ -88,10 +88,9 @@ const AdminUsers = () => {
                       onClick={async () => {
                         const newUser = await deleteUser(id);
                         const newArr = usersArr.filter(
-                          (user) => user._id !== id
+                          (user) => user._id !== newUser._id
                         );
-                        console.log({ newArr });
-                        setUsersArr(newArr);
+                        setUsersArr([...newArr]);
                       }}
                     >
                       <HiOutlineTrash size={20} />
@@ -112,13 +111,13 @@ const AdminUsers = () => {
           }}
           onSubmit={async (value) => {
             const { _id: id, name, email, role } = value;
-            console.log({ name, email, role });
 
             const newUser = await updateUser(id, { name, email, role });
 
             const newArr = usersArr.filter((user) => user._id !== id);
             newArr.push(newUser.data);
-            console.log({ newArr });
+
+            setShowModal(false);
             setUsersArr(newArr);
           }}
         />

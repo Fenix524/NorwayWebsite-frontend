@@ -175,9 +175,10 @@ export const updateAnswer = async (questionId, answerId, answerData) => {
 };
 
 export const deleteAnswer = async (questionId, answerId) => {
+  console.log({ questionId, answerId });
   try {
     const response = await axiosInstance.delete(
-      `/ask/${questionId}/${answerId}`
+      `/questions/ask/${questionId}/${answerId}`
     );
     showSuccessToast("Відповідь успішно видалено! 🗑️");
     return response.data;

@@ -7,7 +7,7 @@
   width: 100vw;
 
   background-color: #00000060;
-  z-index: 100000;
+  z-index: 1010000;
 
   display: flex;
   align-items: center;

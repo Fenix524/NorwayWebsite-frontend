@@ -55,10 +55,21 @@ const AdminLandmarks = () => {
     getCities();
   }, [searchParams]);
 
-  const handleSave = (updatedData) => {
-    console.log("Оновлені дані:", updatedData);
-    // Тут можна додати логіку для збереження оновлених даних
+  const onCreate = (newItem) => {
+    const newArr = [...landmarkArr, newItem];
+    setLandmarkArr(newArr);
+    return newItem;
   };
+
+  const onUpdate = (newItem) => {
+    const itemIndex = landmarkArr.findIndex(
+      (landmark) => landmark._id === newItem._id
+    );
+    landmarkArr.splice(itemIndex, 1, newItem);
+    setLandmarkArr([...landmarkArr]);
+    return newItem;
+  };
+
   const createCityDoc = () => {
     // console.log("Оновлені дані:", updatedData);
     setInitialData(initialPageSteat);
@@ -117,8 +128,12 @@ const AdminLandmarks = () => {
                       <FaRegPenToSquare />
                     </button>
                     <button
-                      onClick={() => {
-                        deleteLandmark(id);
+                      onClick={async () => {
+                        const removedCity = await deleteLandmark(id);
+                        const newArr = landmarkArr.filter(
+                          (city) => city._id !== removedCity._id
+                        );
+                        setLandmarkArr(newArr);
                       }}
                     >
                       <HiOutlineTrash size={20} />
@@ -144,6 +159,8 @@ const AdminLandmarks = () => {
           initialData={initialData}
           createPage={createLandmark}
           updatePage={updateLandmark}
+          onCreate={onCreate}
+          onUpdate={onUpdate}
         />
       )}
     </div>

@@ -56,15 +56,25 @@ const AdminCities = () => {
     getCities();
   }, [searchParams]);
 
-  const handleSave = (updatedData) => {
-    console.log("Оновлені дані:", updatedData);
-    // Тут можна додати логіку для збереження оновлених даних
-  };
   const createCityDoc = () => {
     // console.log("Оновлені дані:", updatedData);
     setInitialData(initialPageSteat);
     setShowModal(true);
     // Тут можна додати логіку для збереження оновлених даних
+  };
+
+  const onCreate = (newItem) => {
+    const newArr = [...citiesArr, newItem]; // додаємо новий елемент до копії масиву
+    setCityArr(newArr); // оновлюємо стан
+    return newItem;
+  };
+
+  const onUpdate = (newItem) => {
+    const itemIndex = citiesArr.findIndex((city) => city._id === newItem._id);
+    const newArr = [...citiesArr]; // створюємо копію масиву
+    newArr.splice(itemIndex, 1, newItem); // замінюємо елемент у копії масиву
+    setCityArr(newArr); // оновлюємо стан
+    return newItem;
   };
 
   if (!citiesArr) {
@@ -118,8 +128,12 @@ const AdminCities = () => {
                       <FaRegPenToSquare />
                     </button>
                     <button
-                      onClick={() => {
-                        deleteCity(id);
+                      onClick={async () => {
+                        const removedCity = await deleteCity(id);
+                        const newArr = citiesArr.filter(
+                          (city) => city._id !== removedCity._id
+                        );
+                        setCityArr(newArr);
                       }}
                     >
                       <HiOutlineTrash size={20} />
@@ -144,6 +158,8 @@ const AdminCities = () => {
           initialData={initialData}
           createPage={createCity}
           updatePage={updateCity}
+          onCreate={onCreate}
+          onUpdate={onUpdate}
         />
       )}
     </div>

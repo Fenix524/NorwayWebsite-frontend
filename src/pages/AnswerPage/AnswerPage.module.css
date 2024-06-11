@@ -63,7 +63,12 @@
   margin-bottom: 5px;
 }
 .changeQuestionsBox button {
-  flex: 1 1 200px;
+  flex: 1 1 220px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .answerSection {

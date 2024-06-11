@@ -18,6 +18,8 @@ const DetailPageModalForm = ({
   initialData = {},
   createPage,
   updatePage,
+  onCreate,
+  onUpdate,
 }) => {
   const [formValues, setFormValues] = useState({ ...initialData });
   const [isNewPage, setIsNewPage] = useState(true);
@@ -151,15 +153,10 @@ const DetailPageModalForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({
-      ...formValues,
-      pageType: initialData.pageType,
-      sections: [],
-    });
 
     const newPage = isNewPage
-      ? await createPage({ ...formValues, sections: [] })
-      : await updatePage(formValues._id, formValues);
+      ? onCreate(await createPage({ ...formValues, sections: [] }))
+      : onUpdate(await updatePage(formValues._id, formValues));
     console.log(newPage);
 
     setFormValues(newPage);
