@@ -1,55 +1,120 @@
+/* Mobile First Styles */
 .Header {
   background-color: #f7f7f7f5;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-
   z-index: 10000;
 }
-.top {
-  height: 85px;
 
+.top > div {
+  height: 85px;
+  width: 100%;
   display: flex;
   align-items: center;
+
   justify-content: space-between;
 }
+
 .logo {
 }
+
 .profile {
 }
-.bottom {
-  border: 1px solid #0000001a;
+
+.bot {
   background-color: #fff;
 }
 
-.navList {
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
+.burgerMenu {
+  width: 100%;
+  padding: 10px 0;
 
-  gap: 5px;
-  @media screen and (min-width: 425px) {
-    gap: 10px;
-  }
-  @media screen and (min-width: 768px) {
-    gap: 20px;
-  }
+  background-color: transparent;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: 1px dashed #00000021;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navList {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.navList.open {
+  display: flex;
+}
+
+.navListItem {
+  width: 100%;
 }
 
 .navListItem a {
-  height: 25px;
-  padding: 0 10px;
-  margin: 10px 0;
+  width: 100%;
+  padding: 15px 10px;
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
-  @media screen and (min-width: 425px) {
-    height: 30px;
+  border-radius: 5px;
+  transition: all linear 0.14s;
+}
+
+.navListItem a:hover {
+  color: #2f94ad;
+}
+.navListItem a.active {
+  background-color: #17b4dbe3;
+  color: #fff;
+}
+
+.navListItem:not(:last-child) {
+  border-bottom: 1px solid #0000001a;
+}
+
+/* Media Queries for larger screens */
+@media (min-width: 768px) {
+  .burgerMenu {
+    display: none;
   }
-  @media screen and (min-width: 768px) {
-    height: 40px;
-    padding: 0 20px;
+
+  .nav {
+    flex-direction: row;
+  }
+
+  .navList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navListItem {
+    width: auto;
+  }
+
+  .navListItem:not(:last-child) {
+    border-bottom: none;
+    margin-right: 15px;
+  }
+
+  .navListItem a {
+    padding: 30px 10px;
+    height: 25px;
   }
 }

@@ -51,9 +51,9 @@
   cursor: pointer;
 }
 .navListBtn.active {
-  padding: 7px 15px;
-  border-radius: 12px;
-  color: #e5e4e4;
+  background-color: #17b4dbe3;
+  border-radius: 5px;
+  color: #fff;
 }
 
 .factsList {

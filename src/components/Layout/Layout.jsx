@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import css from "./Layout.module.css";
 import Footer from "../Footer/Footer";
+import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
 
 export const Layout = () => {
   return (
@@ -18,6 +19,7 @@ export const Layout = () => {
       </Suspense>
       <Footer />
       <ToastContainer position="top-center" className={css.toastContainer} />
+      <ScrollToTopButton />
     </div>
   );
 };

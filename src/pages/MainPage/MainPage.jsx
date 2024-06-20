@@ -56,6 +56,11 @@ const MainPage = () => {
     }
   };
 
+  const getNavLinkClassName = ({ isActive }) => {
+    console.log(isActive);
+    return isActive ? css.active : undefined;
+  };
+
   return (
     <div className={css.mainWrapper}>
       <section className={css.hero}>
@@ -76,7 +81,9 @@ const MainPage = () => {
             {infoSections.map((section) => (
               <li key={section.value} className={css.navListItem}>
                 <button
-                  className={css.navListBtn}
+                  className={`${css.navListBtn} ${
+                    infoSectionIndex === section.value && css.active
+                  }`}
                   onClick={() => handleButtonClick(section.value)}
                 >
                   {section.label}
