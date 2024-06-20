@@ -1,5 +1,15 @@
 .Logo {
-  font-size: 30px;
+  font-size: 25px;
   color: #4d4d4d;
   font-weight: 600;
+
+  @media screen and (min-width: 425px) {
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+  }
+  @media screen and (min-width: 1024px) {
+  }
+  @media screen and (min-width: 1200px) {
+  }
 }
