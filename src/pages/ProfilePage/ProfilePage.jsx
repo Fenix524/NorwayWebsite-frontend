@@ -54,8 +54,8 @@ const ProfilePage = () => {
       const res = await togleBookmarks(id);
       if (res) {
         setThisBookmark((prevBookmark) => {
-          const removedIndex = prevBookmark.pages.findIndex(
-            (pId) => pId === id
+          const removedIndex = prevBookmark.populatedPages.findIndex(
+            (p) => p._id === id
           );
 
           if (removedIndex !== -1) {
@@ -144,7 +144,7 @@ const ProfilePage = () => {
               <Title>Закладки</Title>
               {thisBookmark?.populatedPages ? (
                 <ul className={css.bookmarkList}>
-                  {thisBookmark?.populatedPages?.map((page) => {
+                  {thisBookmark?.populatedPages?.map((page, index) => {
                     console.log(page);
                     return (
                       <li key={page._id} className={css.bookmarkListItem}>
@@ -155,8 +155,8 @@ const ProfilePage = () => {
                         <div className={css.buttonBox}>
                           <button
                             className={css.bookmarkBtn}
-                            onClick={() => {
-                              removeBookmark(page._id);
+                            onClick={async () => {
+                              await removeBookmark(page._id);
                             }}
                           >
                             <HiOutlineTrash size={20} />
